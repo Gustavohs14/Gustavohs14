@@ -1,0 +1,33 @@
+// Variável para controlar o modo de apagar
+let isErasing = false;
+
+function setup() {
+  createCanvas(800, 600);
+  background(255); // Define o fundo branco
+}
+
+function draw() {
+  if (mouseIsPressed) {
+    if (isErasing) {
+      // Apagar: desenha com cor do fundo
+      stroke(255); // Cor branca para apagar em fundo branco
+      strokeWeight(20); // Tamanho do "apagador"
+      line(pmouseX, pmouseY, mouseX, mouseY);
+    } else {
+      // Desenhar
+      stroke(0); // Cor preta para desenhar
+      strokeWeight(5); // Tamanho do "pincel"
+      line(pmouseX, pmouseY, mouseX, mouseY);
+    }
+  }
+}
+
+function keyPressed() {
+  if (key === 'c' || key === 'C') {
+    // Limpar a tela quando a tecla "c" for pressionada
+    background(255);
+  } else if (key === 'e' || key === 'E') {
+    // Alternar para o modo de apagar quando a tecla "e" for pressionada
+    isErasing = !isErasing;
+  }
+}
